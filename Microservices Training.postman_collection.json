@@ -1,0 +1,540 @@
+{
+	"info": {
+		"_postman_id": "3ea4299a-077e-4d20-8bdb-d39b465e2e86",
+		"name": "Microservices Training",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Employee CRUD",
+			"item": [
+				{
+					"name": "Add an Employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eID\": \"E2\",\n    \"name\": \"Prakash\"\n}"
+						},
+						"url": {
+							"raw": "{{Host}}/{{emp}}",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{emp}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employees ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/employees",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employee by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/{{emp}}/E1",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{emp}}",
+								"E1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an Employee",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eID\": \"E1\",\n    \"name\": \"Sanjay Kumar\"\n}"
+						},
+						"url": {
+							"raw": "{{Host}}/{{emp}}/",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{emp}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/{{emp}}/E1",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{emp}}",
+								"E1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Oauth",
+			"item": [
+				{
+					"name": "Add User",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "sanjay@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "sanjay",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "USER",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/signup",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Admin",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Host}}/api/signup",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token User",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "myClientId",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/{{oauth}}/token?grant_type=password&username=sanjay@test.com&password=sanjay",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{oauth}}",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"key": "username",
+									"value": "sanjay@test.com"
+								},
+								{
+									"key": "password",
+									"value": "sanjay"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token Admin",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "myClientId",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/{{oauth}}/token?grant_type=password&username=admin@test.com&password=admin",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{oauth}}",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"key": "username",
+									"value": "admin@test.com"
+								},
+								{
+									"key": "password",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access User",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpIl0sInVzZXJfbmFtZSI6InNhbmpheUB0ZXN0LmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE1OTU5OTM2MjgsImF1dGhvcml0aWVzIjpbIlVTRVIiXSwianRpIjoiZTUwNjhjZjAtNDBkZC00ZjMxLWI5ZGUtZDUzMjAxMzg2NzNjIiwiY2xpZW50X2lkIjoibXlDbGllbnRJZCJ9.VTTjP0OrqkDFQ3WIGqHlzYi1ZguIR7BNwEEjPO2MjzM",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/user",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access Message",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpIl0sInVzZXJfbmFtZSI6ImFkbWluQHRlc3QuY29tIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTU5NTk5MzQxNywiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwianRpIjoiOTlmNjhlMmYtOWM2My00MDc4LWI3YjAtMDQxN2RjMzkxNjAxIiwiY2xpZW50X2lkIjoibXlDbGllbnRJZCJ9.A5vmNe24S43S3LKpniOLvGJ2CxrwhL82Xs9XcTx4yD0",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/message",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access Admin",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpIl0sInVzZXJfbmFtZSI6InNhbmpheUB0ZXN0LmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE1OTU5OTMyMTQsImF1dGhvcml0aWVzIjpbIlVTRVIiXSwianRpIjoiYTE0MTIwZjMtMTI4MC00NzhiLTljOWItZDM2MGQ2ZmI4YWQzIiwiY2xpZW50X2lkIjoibXlDbGllbnRJZCJ9.E8I6HlQsotT5I_hOGEZsuKh9YgkvCBn-EPZDnu7RReI",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/api/user",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "myClientId",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/{{oauth}}/check_token?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpIl0sInVzZXJfbmFtZSI6InNhbmpheUB0ZXN0LmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE1OTU5NTcyNzYsImF1dGhvcml0aWVzIjpbIlVTRVIiXSwianRpIjoiYjRmOWU3NjctZGVmNC00MzUxLWI4MWMtNTdmZTQyODZkMzE1IiwiY2xpZW50X2lkIjoibXlDbGllbnRJZCJ9.mGaZLjXcbrtYCKg40ZW-Rn-ygkw7cyx1Kxyq_f842G8",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{oauth}}",
+								"check_token"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpIl0sInVzZXJfbmFtZSI6InNhbmpheUB0ZXN0LmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE1OTU5NTcyNzYsImF1dGhvcml0aWVzIjpbIlVTRVIiXSwianRpIjoiYjRmOWU3NjctZGVmNC00MzUxLWI4MWMtNTdmZTQyODZkMzE1IiwiY2xpZW50X2lkIjoibXlDbGllbnRJZCJ9.mGaZLjXcbrtYCKg40ZW-Rn-ygkw7cyx1Kxyq_f842G8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "myClientId",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Host}}/{{oauth}}/token?grant_type=refresh_token&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpIl0sInVzZXJfbmFtZSI6InNhbmpheUB0ZXN0LmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJhdGkiOiJjMWZiNjIxNy1iNWM5LTRmYjktODBkMS1mODQ1MDA1MDA2M2IiLCJleHAiOjE1OTU5NTM4MzIsImF1dGhvcml0aWVzIjpbIlVTRVIiXSwianRpIjoiZjRhN2ZiZGMtOGNjYi00NDUzLTlmOWMtNWUzMWYyMTEyOTA0IiwiY2xpZW50X2lkIjoibXlDbGllbnRJZCJ9.oYo6n7RTAQ19XnVPTmTyblyt78JUrBX4kxiVF-JMtng",
+							"host": [
+								"{{Host}}"
+							],
+							"path": [
+								"{{oauth}}",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token"
+								},
+								{
+									"key": "refresh_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiYXBpIl0sInVzZXJfbmFtZSI6InNhbmpheUB0ZXN0LmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJhdGkiOiJjMWZiNjIxNy1iNWM5LTRmYjktODBkMS1mODQ1MDA1MDA2M2IiLCJleHAiOjE1OTU5NTM4MzIsImF1dGhvcml0aWVzIjpbIlVTRVIiXSwianRpIjoiZjRhN2ZiZGMtOGNjYi00NDUzLTlmOWMtNWUzMWYyMTEyOTA0IiwiY2xpZW50X2lkIjoibXlDbGllbnRJZCJ9.oYo6n7RTAQ19XnVPTmTyblyt78JUrBX4kxiVF-JMtng"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	]
+}
